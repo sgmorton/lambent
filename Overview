@@ -1,0 +1,24 @@
+Modular lighting animation using MQTT
+
+USE CASE : Interior Lighting in a Tesla
+
+Description: 
+I want to have some animated RGB LEDs on the interior of my Tesla
+Under dash, doors 1 thru 4, under seats.
+
+Concept:
+
+Raspi0W : The Raspi will run a Mosquito server and act as the adhoc wifi hub. 
+In addition to this there will be a website accesible for control of animations and configuration.
+
+Arduino Uno : The Uno will handle the heavy lifting. All animations will be controlled on the Uno as if it were one large array of LEDs.
+Each frame of the (SHOWLED) would then be chopped into small parts coresponding to the arrays in each location (doors etc...) as each
+new array piece is chopped it's published to the Mosquito server where each individual controller is subbed. 
+The Uno may also have a bluetooth dongle for control.
+
+ESP8266 : these will be located in each of the locations. They will subscribe to thier particular node on the Mosquito server and upon
+reciept of a pub will light the LEDs on thier array according to the payload. There will need to be a way to configure these remotely as 
+will not be easily accessible once installed.
+
+
+
