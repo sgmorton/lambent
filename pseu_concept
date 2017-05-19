@@ -1,0 +1,46 @@
+void loop(){
+led[0] = red // set any animation frame here just as you would in any FastLED code
+fastled.show(); //call the broker code here
+
+}
+
+
+void broker(){
+
+// setup the arrarys of lights to be used. 
+// these would each be unique
+br[0].[1...] // under dash
+br[1].[1...] // driver door
+br[2].[1...] // passenger door
+br[3].[1...] // under seat etc...
+
+LED[1...] //full array of the light animation you are trying to acheive it should be the sum of all
+          // of the BR arrarys
+
+
+i=0 // just a counter
+brpos=0 // which broker array to deal with 
+bri=1
+
+
+// take the LED array which is a frame of the animation
+// chop it into the appropriate parts
+// once chopped publish that frame
+//
+
+while i < LED[], count // loops thru the led string arrary
+  
+  br[bri][brpos] = led[i] // set the current LED to the proper array position for br led
+  
+  if brpos == br[bri],count
+    bri++ 
+    // send the message here
+    // move to the next array
+  end if
+
+  i++ // bump the global light arrary
+  brpos++ // move to the next led in the current br
+  
+loop
+
+
